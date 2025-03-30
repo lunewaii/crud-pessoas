@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRUD Pessoas</title>
+</head>
+<body>
+  <h1>Cadastro de Pessoas</h1>
+
+  <form action="/save" method="POST">
+    <% if (editing) { %>
+      <input type="hidden" name="id" value="<%= editing.id %>">
+    <% } %>
+    
+    <div>
+      <label>Nome:
+        <input type="text" name="nome" 
+               value="<%= editing ? editing.nome : '' %>" required>
+      </label>
+    </div>
+    
+    <div>
+      <label>Idade:
+        <input type="number" name="idade" 
+               value="<%= editing ? editing.idade : '' %>" required>
+      </label>
+    </div>
+    
+    <div>
+      <label>Peso (kg):
+        <input type="number" step="0.01" name="peso"
+               value="<%= editing ? editing.peso : '' %>" required>
+      </label>
+    </div>
+    
+    <button type="submit">
+      <%= editing ? 'Atualizar' : 'Salvar' %>
+    </button>
+    
+    <% if (editing) { %>
+      <a href="/">Cancelar Edição</a>
+    <% } %>
+  </form>
+
+  <!-- lista de pessoas -->
+  <h2>Registros</h2>
+  <% if (pessoas && pessoas.length > 0) { %>
+    <% pessoas.forEach(p => { %>
+      <div style="margin: 10px 0; padding: 5px; border: 1px solid #ccc;">
+        <strong><%= p.nome %></strong> - 
+        <%= p.idade %> anos - 
+        <%= p.peso %> kg
+        <div style="margin-top: 5px;">
+          <a href="/edit/<%= p.id %>">Editar</a> | 
+          <a href="/delete/<%= p.id %>">Excluir</a>
+        </div>
+      </div>
+    <% }); %>
+  <% } else { %>
+    <p>Nenhuma pessoa cadastrada ainda.</p>
+  <% } %>
+</body>
+</html>

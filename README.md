@@ -1,0 +1,2 @@
+# sistema de cadastro de pessoas com crud!
+### aqui, usei apenas ejs (sem estilizaçao), javascript, mysql e express para criar um sistema de cadastro de pessoas, com banco de dados. É possível cadastrar uma nova pessoa e editar ou excluir as existentes, com algumas regras quanto ao limite de caracteres e peso.

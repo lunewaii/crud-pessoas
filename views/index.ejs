@@ -47,22 +47,23 @@
     </form>
   </div>
 
-  <!-- lista de pessoas -->
-  <h2>Registros</h2>
-  <% if (pessoas && pessoas.length > 0) { %>
-    <% pessoas.forEach(p => { %>
-      <div style="margin: 10px 0; padding: 5px; border: 1px solid #ccc;">
-        <strong><%= p.nome %></strong> - 
-        <%= p.idade %> anos - 
-        <%= p.peso %> kg
-        <div style="margin-top: 5px;">
-          <a href="/edit/<%= p.id %>">Editar</a> | 
-          <a href="/delete/<%= p.id %>">Excluir</a>
+  <div class="registros">
+    <h2>Registros</h2>
+    <% if (pessoas && pessoas.length > 0) { %>
+      <% pessoas.forEach(p => { %>
+        <div class="registro">
+          <strong><%= p.nome %></strong> 
+          <%= p.idade %> anos - 
+          <%= p.peso %> kg
+          <div class="acoes">
+            <a href="/edit/<%= p.id %>">Editar</a>
+            <a href="/delete/<%= p.id %>">Excluir</a>
+          </div>
         </div>
-      </div>
-    <% }); %>
-  <% } else { %>
-    <p>Nenhuma pessoa cadastrada ainda.</p>
-  <% } %>
+      <% }); %>
+    <% } else { %>
+      <p>Nenhuma pessoa cadastrada ainda.</p>
+    <% } %>
+  </div>
 </body>
 </html>

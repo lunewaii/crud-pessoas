@@ -6,42 +6,46 @@
   <link rel="stylesheet" href="/public/style.css">
 </head>
 <body>
-  <h1>Cadastro de Pessoas</h1>
+  <div class="h1">
+    <h1>Cadastro de Pessoas - CRUD</h1>
+  </div>
 
-  <form action="/save" method="POST">
-    <% if (editing) { %>
-      <input type="hidden" name="id" value="<%= editing.id %>">
-    <% } %>
-    
-    <div>
-      <label>Nome:
-        <input type="text" name="nome" 
-               value="<%= editing ? editing.nome : '' %>" required>
-      </label>
-    </div>
-    
-    <div>
-      <label>Idade:
-        <input type="number" name="idade" 
-               value="<%= editing ? editing.idade : '' %>" required>
-      </label>
-    </div>
-    
-    <div>
-      <label>Peso (kg):
-        <input type="number" step="0.01" name="peso"
-               value="<%= editing ? editing.peso : '' %>" required>
-      </label>
-    </div>
-    
-    <button type="submit">
-      <%= editing ? 'Atualizar' : 'Salvar' %>
-    </button>
-    
-    <% if (editing) { %>
-      <a href="/">Cancelar</a>
-    <% } %>
-  </form>
+  <div class="form">
+    <form action="/save" method="POST">
+      <% if (editing) { %>
+        <input type="hidden" name="id" value="<%= editing.id %>">
+      <% } %>
+      
+      <div>
+        <label>Nome:
+          <input type="text" name="nome" 
+                 value="<%= editing ? editing.nome : '' %>" required>
+        </label>
+      </div>
+      
+      <div>
+        <label>Idade:
+          <input type="number" name="idade" 
+                 value="<%= editing ? editing.idade : '' %>" required>
+        </label>
+      </div>
+      
+      <div>
+        <label>Peso (kg):
+          <input type="number" step="0.01" name="peso"
+                 value="<%= editing ? editing.peso : '' %>" required>
+        </label>
+      </div>
+      
+      <button type="submit">
+        <%= editing ? 'Atualizar' : 'Salvar' %>
+      </button>
+      
+      <% if (editing) { %>
+        <a href="/">Cancelar</a>
+      <% } %>
+    </form>
+  </div>
 
   <!-- lista de pessoas -->
   <h2>Registros</h2>

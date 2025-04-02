@@ -20,6 +20,7 @@ db.connect(err => {
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use('/public', express.static('public'));
 
 app.get('/', (req, res) => {
   db.query('SELECT id, nome, idade, peso FROM pessoas', (err, pessoas) => {

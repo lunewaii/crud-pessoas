@@ -39,10 +39,32 @@ app.get('/', (req, res) => {
 app.post('/save', (req, res) => {
   const { id, nome, idade, peso } = req.body;
 
-  if(typeof nome !== 'string' || isNaN(idade) || isNaN(peso) || isNaN(id) ||
-      nome.length > 100 || peso > 999.99 || id.trim() === '' || peso < 0 || idade < 0
-    || nome.trim() === '' || idade.trim() === '' || peso.trim() === '') {
+  if(typeof nome !== 'string' || nome.length > 100 || peso > 999.99 || peso < 0 || idade < 0) {
     console.log('Dados inválidos!');
+    res.redirect('/');
+    return;
+  }
+
+  if(isNaN(idade)){
+    console.log('escreveu algo diferente de número no campo idade');
+    res.redirect('/');
+    return;
+  }
+
+  if(isNaN(peso)){
+    console.log('escreveu algo diferente de número no campo peso');
+    res.redirect('/');
+    return;
+  }
+
+  if(id && isNaN(id)){
+    console.log('campo id não é número');
+    res.redirect('/');
+    return;
+  }
+
+  if((id && id.trim() === '') || nome.trim() === '' || idade.trim() === '' || peso.trim() === ''){
+    console.log('deixou um campo vazio');
     res.redirect('/');
     return;
   }
